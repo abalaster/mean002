@@ -4,8 +4,10 @@
   "description": "JavaScript development environment",
   "scripts": {
     "prestart": "node buildScripts\\startMessage.js",
-    "start": "node buildScripts\\srcServer.js",
-    "share": "lt-win --port 3000"
+    "start": "npm-run-all --parallel open:src",
+    "open:src": "node buildScripts\\srcServer.js",
+    "localtunnel": "lt-win --port 3000",
+    "share": "npm-run-all --parallel open:src localtunnel",
   },
   "author": "Aaron Balaster",
   "license": "MIT",

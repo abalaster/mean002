@@ -1,8 +1,14 @@
 {
   "name": "javascript-development-environment",
   "version": "1.0.0",
-  "description": "JavaScript development environment",
-  "scripts": {},
+  "description": "JavaScript development environment: express, localtunnel, babel",
+  "scripts": {
+    "prestart": "babel-node buildScripts\\startMessage.js",
+    "start": "npm-run-all --parallel open:src",
+    "open:src": "babel-node buildScripts\\srcServer.js",
+    "localtunnel": "lt-win --port 3000 --subdomain abalaster",
+    "share": "npm-run-all --parallel open:src localtunnel"
+  },
   "author": "Aaron Balaster",
   "license": "MIT",
   "dependencies": {
@@ -13,6 +19,7 @@
     "babel-core": "7.0.0-bridge.0",
     "babel-loader": "^8.0.6",
     "babel-preset-env": "^1.7.0",
+    "babel-preset-latest": "^6.24.1",
     "babel-register": "^6.26.0",
     "chai": "^4.2.0",
     "chalk": "^3.0.0",
