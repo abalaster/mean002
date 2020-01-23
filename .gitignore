@@ -9,6 +9,11 @@ lerna-debug.log*
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 
+# idea
+**/.idea/workspace.xml
+**/.idea/tasks.xml
+#**/.idea/*.iws
+
 # Runtime data
 pids
 *.pid

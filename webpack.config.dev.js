@@ -3,9 +3,11 @@ import path from 'path';
 
 // webpack is configured by exporting an object
 export default {
-  debug: true, // enables some debugging information as we run our build.
+  // debug: true, // enables some debugging information as we run our build.
   devtool: 'inline-source-map', // a number of dev tools to consider. Compilation speed vs quality. Higher quality takes longer.
-  noInfo: false, // This means that Webpack will display a list of files. Typically leave this off but will have it on to start.
+  // noInfo: true,  // This means that Webpack will display a list of files. Typically leave this off but will have it on to start.
+  watch: true,
+  mode: 'development',
   entry: [ // Can pass an array of entrypoints. A good way to inject middleware for hot reloading. Keeping it simple for now.
           path.resolve(__dirname, 'src/index') // __dirname is a node keyname that provides the full path.
   ],
@@ -20,9 +22,9 @@ export default {
   // },
   plugins: [], // we will use some plugins to enhance Webpack. eg hot-reloading, catching errors, linting styles.
   module: { // Need to tell Webpack the filetypes we want it to handle. Webpack calls them 'loaders'.
-    loaders: [
-      {test: /\.js$/, exclude: /node_modules/, loaders: ['babel']},
-      {test: /\.css$/, loaders: ['style', 'css']} // could add other handlers here for SASS, LESS, images and more.
+    rules: [
+      {test: /\.js$/, exclude: /node_modules/, loaders: ['babel-loader']},
+      {test: /\.css$/, loaders: ['style-loader', 'css-loader']}, // could add other handlers here for SASS, LESS, images and more
     ]
-  }
+  },
 }
